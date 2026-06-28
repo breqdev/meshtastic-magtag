@@ -13,8 +13,17 @@
 #define NEOPIXEL_DATA 1
 #define NEOPIXEL_TYPE (NEO_GRB + NEO_KHZ800)
 
-// This is the bottom right button, TODO: hook up all four
-#define BUTTON_PIN 11
+// Four-button directional input
+#define HAS_TRACKBALL 1
+#define TB_DOWN 12
+#define TB_UP 14
+#define TB_LEFT 15
+#define TB_RIGHT 11
+#define TB_PRESS 38 // double-tap? we don't have a better "press"
+#define TB_DIRECTION FALLING // TODO: is it RISING?
+
+// Side button (BOOT)
+#define BUTTON_PIN 0
 #define BUTTON_NEED_PULLUP
 
 #define USE_SX1262
