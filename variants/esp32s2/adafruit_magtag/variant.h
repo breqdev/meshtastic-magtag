@@ -1,17 +1,27 @@
+// No GPS on this module
 #define HAS_GPS 0
 #undef GPS_RX_PIN
 #undef GPS_TX_PIN
 
+// TODO
+// - serial port not working
+// - beeper? need to figure out how it works
+
 // I2C broken out to STEMMA QT connector
 #define I2C_SDA 33
 #define I2C_SCL 34
+
+// Accelerometer on I2C bus
+#define HAS_SENSOR 1
 
 // NeoPixels above E-Ink display
 // TODO: Pin 21 is mapped to NeoPixel power
 #define HAS_NEOPIXEL
 #define NEOPIXEL_COUNT 4
 #define NEOPIXEL_DATA 1
+#define NEOPIXEL_POWER 21
 #define NEOPIXEL_TYPE (NEO_GRB + NEO_KHZ800)
+#define ENABLE_AMBIENTLIGHTING
 
 // Four-button directional input
 #define HAS_TRACKBALL 1
@@ -19,8 +29,9 @@
 #define TB_UP 14
 #define TB_LEFT 15
 #define TB_RIGHT 11
-#define TB_PRESS 38 // double-tap? we don't have a better "press"
+// #define TB_PRESS 38 // double-tap? we don't have a better "press"
 #define TB_DIRECTION FALLING // TODO: is it RISING?
+#define TB_THRESHOLD 0
 
 // Side button (BOOT)
 #define BUTTON_PIN 0
@@ -56,3 +67,10 @@
 #define PIN_EINK_RES 6
 #define PIN_EINK_SCLK 36
 #define PIN_EINK_MOSI 35
+
+// Battery voltage
+#define BATTERY_PIN 4
+#define ADC_MULTIPLIER 2
+#define ADC_CHANNEL ADC1_GPIO4_CHANNEL
+// 12-bit resolution not supported on ESP32S2
+#define ADC_WIDTH ADC_WIDTH_BIT_13

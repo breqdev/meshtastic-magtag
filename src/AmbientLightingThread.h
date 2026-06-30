@@ -87,6 +87,12 @@ class AmbientLightingThread : public concurrency::OSThread
                 pinMode(RGBLED_BLUE, OUTPUT);
 #endif
 #ifdef HAS_NEOPIXEL
+
+#ifdef NEOPIXEL_POWER
+                pinMode(NEOPIXEL_POWER, OUTPUT);
+                digitalWrite(NEOPIXEL_POWER, LOW);
+#endif
+
                 pixels.begin(); // Initialise the pixel(s)
                 pixels.clear(); // Set all pixel colors to 'off'
                 pixels.setBrightness(moduleConfig.ambient_lighting.current);
@@ -149,6 +155,11 @@ class AmbientLightingThread : public concurrency::OSThread
 #ifdef HAS_NEOPIXEL
             pixels.clear();
             pixels.show();
+
+#ifdef NEOPIXEL_POWER
+                digitalWrite(NEOPIXEL_POWER, HIGH);
+#endif
+
             LOG_INFO("OFF: NeoPixel Ambient lighting");
 #endif
 #ifdef RGBLED_CA
