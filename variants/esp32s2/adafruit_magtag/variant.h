@@ -29,13 +29,15 @@
 #define TB_UP 14
 #define TB_LEFT 15
 #define TB_RIGHT 11
-// #define TB_PRESS 38 // double-tap? we don't have a better "press"
+#define TB_PRESS 0
 #define TB_DIRECTION FALLING // TODO: is it RISING?
 #define TB_THRESHOLD 0
 
 // Side button (BOOT)
-#define BUTTON_PIN 0
-#define BUTTON_NEED_PULLUP
+// Don't use this as user button -- it's better off as TB_PRESS
+// #define BUTTON_PIN 0
+// #define BUTTON_NEED_PULLUP
+
 
 #define USE_SX1262
 
@@ -67,6 +69,9 @@
 #define PIN_EINK_RES 6
 #define PIN_EINK_SCLK 36
 #define PIN_EINK_MOSI 35
+
+// Needs faster update rate for smooth navigation with buttons
+#define EINK_FORCE_DISPLAY_THROTTLE_MS 200
 
 // Battery voltage
 #define BATTERY_PIN 4
